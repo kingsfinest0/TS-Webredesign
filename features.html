@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thought Sweep | Features</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="onboarding-page">
+    <a href="download.html" class="onboarding-skip">Skip</a>
+
+    <section class="onboarding-slide active" data-index="0">
+      <h1 class="onboarding-title">Capture your thoughts.</h1>
+      <p class="onboarding-copy">Sort it right away or when it's convenient</p>
+      <div class="onboarding-image-wrap">
+        <img class="onboarding-image" src="feature-capture.png" alt="Thought capture screen" />
+      </div>
+    </section>
+
+    <section class="onboarding-slide" data-index="1">
+      <h1 class="onboarding-title">Organize your ideas.</h1>
+      <p class="onboarding-copy">Sort uncategorized thoughts into categories, to-do's or keep them in your working memory</p>
+      <div class="onboarding-image-wrap">
+        <img class="onboarding-image" src="feature-organize.png" alt="Thought organization screen" />
+      </div>
+    </section>
+
+    <section class="onboarding-slide" data-index="2">
+      <h1 class="onboarding-title">Create your Digital Memory</h1>
+      <p class="onboarding-copy">Add categories to organize your thoughts, ideas and memorable information</p>
+      <div class="onboarding-image-wrap">
+        <img class="onboarding-image" src="feature-memory.png" alt="Digital memory screen" />
+      </div>
+    </section>
+
+    <section class="onboarding-slide" data-index="3">
+      <h1 class="onboarding-title">Network is networth</h1>
+      <p class="onboarding-copy">Remember thoughts, quotes, advice and ideas about people you know</p>
+      <div class="onboarding-image-wrap">
+        <img class="onboarding-image" src="feature-people.png" alt="People memory screen" />
+      </div>
+    </section>
+
+    <section class="onboarding-slide" data-index="4">
+      <h1 class="onboarding-title">Remember effortlessly</h1>
+      <p class="onboarding-copy">Swipe through your thoughts to easily remember what's saved in your Thought Sweep</p>
+      <div class="onboarding-image-wrap">
+        <img class="onboarding-image" src="feature-swipe.png" alt="Swipe thoughts screen" />
+      </div>
+    </section>
+
+    <section class="onboarding-slide" data-index="5">
+      <h1 class="onboarding-title">Arrange your To-Do's</h1>
+      <p class="onboarding-copy">Get thoughts out of your head. Add to-do's to priority tiers so you can get things done</p>
+      <div class="onboarding-image-wrap">
+        <img class="onboarding-image" src="feature-todo.png" alt="To-do arrangement screen" />
+      </div>
+    </section>
+
+    <div class="onboarding-dots" aria-label="Slide progress">
+      <button class="onboarding-dot active" type="button" aria-label="Slide 1"></button>
+      <button class="onboarding-dot" type="button" aria-label="Slide 2"></button>
+      <button class="onboarding-dot" type="button" aria-label="Slide 3"></button>
+      <button class="onboarding-dot" type="button" aria-label="Slide 4"></button>
+      <button class="onboarding-dot" type="button" aria-label="Slide 5"></button>
+      <button class="onboarding-dot" type="button" aria-label="Slide 6"></button>
+    </div>
+
+    <button id="onboarding-next" class="onboarding-next" type="button">Next</button>
+  </main>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll(".onboarding-slide"));
+    const dots = Array.from(document.querySelectorAll(".onboarding-dot"));
+    const nextBtn = document.getElementById("onboarding-next");
+    let current = 0;
+
+    function renderSlide() {
+      slides.forEach((slide, idx) => {
+        slide.classList.toggle("active", idx === current);
+      });
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle("active", idx === current);
+      });
+      nextBtn.textContent = current === slides.length - 1 ? "Download Now" : "Next";
+    }
+
+    nextBtn.addEventListener("click", () => {
+      if (current === slides.length - 1) {
+        window.location.href = "download.html";
+        return;
+      }
+      current += 1;
+      renderSlide();
+    });
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener("click", () => {
+        current = idx;
+        renderSlide();
+      });
+    });
+  </script>
+</body>
+</html>

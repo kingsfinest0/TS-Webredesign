@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thought Sweep | Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="wrapper">
+    <header>
+      <div class="logo-title">
+        <img src="logo.png" alt="Thought Sweep Logo" class="logo" />
+        <h1>Thought Sweep</h1>
+      </div>
+    </header>
+
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="demo.html">Demo</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="download.html">Download</a></li>
+      </ul>
+    </nav>
+
+    <main class="main-content">
+      <section class="demo-app">
+        <div id="save-screen" class="save-screen">
+          <h2>Save Thought</h2>
+          <p>Capture whats on your mind: ideas, quotes, thoughts.</p>
+          <div class="thought-input-wrap">
+            <textarea
+              id="thought-input"
+              class="thought-input"
+              rows="7"
+              placeholder="What's on your mind?"
+            ></textarea>
+            <span class="mic-circle" aria-hidden="true">🎤</span>
+          </div>
+          <button id="save-thought-btn" class="save-thought-btn" type="button">Save Thought</button>
+          <p id="loading-message" class="loading-message" hidden>
+            Loading category suggestions<span class="dot-anim"><span>.</span><span>.</span><span>.</span></span>
+          </p>
+        </div>
+
+        <div id="suggestion-screen" class="suggestion-screen" hidden>
+          <h2>Category Suggestions</h2>
+          <div class="thought-card">
+            <p class="thought-date" id="thought-date"></p>
+            <p id="saved-thought-text">Thought text appears here.</p>
+            <span class="thought-pill">Uncategorized</span>
+          </div>
+          <h3>Category suggestions:</h3>
+          <div id="category-suggestions" class="category-suggestions"></div>
+        </div>
+
+        <div id="categories-screen" class="categories-screen" hidden>
+          <h2>Categories</h2>
+          <p>Your thought has been organized into the selected folder.</p>
+          <div id="folder-grid" class="folder-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Thought Sweep. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    const saveScreen = document.getElementById("save-screen");
+    const suggestionScreen = document.getElementById("suggestion-screen");
+    const categoriesScreen = document.getElementById("categories-screen");
+    const thoughtInput = document.getElementById("thought-input");
+    const saveThoughtBtn = document.getElementById("save-thought-btn");
+    const loadingMessage = document.getElementById("loading-message");
+    const savedThoughtText = document.getElementById("saved-thought-text");
+    const thoughtDate = document.getElementById("thought-date");
+    const categorySuggestionsWrap = document.getElementById("category-suggestions");
+    const folderGrid = document.getElementById("folder-grid");
+
+    const allCategories = [
+      "Quotes and Sayings",
+      "Health and Wellness",
+      "Mindset",
+      "Bits of Information",
+      "Marketing",
+      "Event Strategy",
+      "Business Ideas",
+      "Mental Health",
+      "Work",
+      "School"
+    ];
+
+    const keywordRules = [
+      { category: "Work", words: ["work", "meeting", "project", "deadline"] },
+      { category: "School", words: ["school", "class", "homework", "quiz", "study"] },
+      { category: "Business Ideas", words: ["idea", "app", "business", "startup"] },
+      { category: "Health and Wellness", words: ["gym", "workout", "run", "health", "wellness"] },
+      { category: "Mindset", words: ["mindset", "motivation", "discipline", "productive", "productivity"] },
+      { category: "Quotes and Sayings", words: ["quote", "saying", "book"] }
+    ];
+
+    const folderToneClass = [
+      "folder-tone-1",
+      "folder-tone-2",
+      "folder-tone-3",
+      "folder-tone-4",
+      "folder-tone-5",
+      "folder-tone-6"
+    ];
+
+    function getBestCategory(thought) {
+      const normalized = thought.toLowerCase();
+      for (const rule of keywordRules) {
+        if (rule.words.some((word) => normalized.includes(word))) {
+          return rule.category;
+        }
+      }
+      return "Bits of Information";
+    }
+
+    function buildSuggestions(bestCategory) {
+      const other = allCategories.filter((cat) => cat !== bestCategory).slice(0, 2);
+      return [bestCategory, ...other];
+    }
+
+    function renderSuggestionCards(categories) {
+      categorySuggestionsWrap.innerHTML = "";
+      categories.forEach((category, index) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "folder-card " + folderToneClass[index % folderToneClass.length];
+        btn.textContent = category;
+        btn.addEventListener("click", () => showCategories(category));
+        categorySuggestionsWrap.appendChild(btn);
+      });
+    }
+
+    function showCategories(selectedCategory) {
+      suggestionScreen.hidden = true;
+      categoriesScreen.hidden = false;
+
+      const categorySet = new Set([
+        "Quotes and Sayings",
+        "Health and Wellness",
+        "Mindset",
+        "Bits of Information",
+        "Marketing",
+        "Event Strategy",
+        "Business Ideas",
+        "Mental Health",
+        selectedCategory
+      ]);
+
+      folderGrid.innerHTML = "";
+      Array.from(categorySet).forEach((category, index) => {
+        const card = document.createElement("div");
+        const selected = category === selectedCategory;
+        card.className =
+          "folder-card " +
+          folderToneClass[index % folderToneClass.length] +
+          (selected ? " selected-folder" : "");
+        card.innerHTML = selected
+          ? category + '<span class="added-label">Added here</span>'
+          : category;
+        folderGrid.appendChild(card);
+      });
+    }
+
+    saveThoughtBtn.addEventListener("click", () => {
+      const typedThought = thoughtInput.value.trim();
+      if (!typedThought) {
+        thoughtInput.focus();
+        return;
+      }
+
+      loadingMessage.hidden = false;
+      saveThoughtBtn.disabled = true;
+
+      const bestCategory = getBestCategory(typedThought);
+      const suggestions = buildSuggestions(bestCategory);
+
+      setTimeout(() => {
+        saveScreen.hidden = true;
+        suggestionScreen.hidden = false;
+        loadingMessage.hidden = true;
+        saveThoughtBtn.disabled = false;
+
+        savedThoughtText.textContent = typedThought;
+        thoughtDate.textContent = new Date().toLocaleDateString("en-CA", {
+          month: "long",
+          day: "numeric",
+          year: "numeric"
+        });
+
+        renderSuggestionCards(suggestions);
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
