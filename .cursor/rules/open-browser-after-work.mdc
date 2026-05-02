@@ -1,0 +1,12 @@
+---
+description: Open the site in Chrome after finishing work on this static project
+alwaysApply: true
+---
+
+# Browser check after changes
+
+When you finish a task that edits HTML, CSS, assets, or scripts for this Thought Sweep static site, open the home page in Google Chrome so the user can verify immediately:
+
+`open -a "Google Chrome" "/Users/jakeking/Desktop/TS-Webredesign/index.html"`
+
+Use this path (or the workspace-relative equivalent) after substantive changes. For navigation-only checks of inner pages, opening `index.html` is still acceptable unless the change was isolated to another page—in that case open the edited file (e.g. `demo.html`) in Chrome instead.

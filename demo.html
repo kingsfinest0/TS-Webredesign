@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Thought Sweep browser demo: personas, step-by-step walkthrough, simulated vs. real app notes, FAQ, and an interactive capture flow with mock categories."
+  />
   <title>Thought Sweep | Demo</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -25,10 +29,55 @@
     </nav>
 
     <main class="main-content">
+      <section class="demo-intro" aria-labelledby="demo-intro-heading">
+        <h2 id="demo-intro-heading">Interactive demo</h2>
+        <p>
+          This in-page preview walks you through saving a thought, seeing lightweight category
+          suggestions, and landing in a folder-style layout—similar to the first-run flow in the
+          app. Use it to imagine how quickly you can offload ideas without breaking focus.
+        </p>
+        <figure class="demo-intro-figure">
+          <img
+            src="hero-shot-2.png"
+            alt="Thought Sweep interface showing categories and sorting"
+            class="demo-intro-image"
+          />
+          <figcaption class="demo-intro-caption">
+            The full app adds sync, search, and richer tagging; this demo spotlights capture and
+            organization only.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="demo-personas" aria-labelledby="demo-personas-heading">
+        <h2 id="demo-personas-heading">Who this is for</h2>
+        <p>
+          This preview is for anyone who loses ideas between tasks—students juggling assignments,
+          founders capturing product sparks, clinicians noting follow-ups, and knowledge workers who
+          want a lighter inbox than a full document system.
+        </p>
+        <ul>
+          <li><strong>Students:</strong> park lecture takeaways and due-date reminders without opening a heavy notes app.</li>
+          <li><strong>Founders &amp; builders:</strong> stash customer quotes, roadmap thoughts, and meeting prompts in one flow.</li>
+          <li><strong>Clinicians &amp; caregivers:</strong> jot non-sensitive reminders to revisit later (never use this demo for PHI; the real app is on-device with your own policies).</li>
+        </ul>
+      </section>
+
+      <section class="demo-howto" aria-labelledby="demo-howto-heading">
+        <h2 id="demo-howto-heading">How to use this demo</h2>
+        <ol>
+          <li>Type a short thought in the box—try words like <em>meeting</em>, <em>study</em>, or <em>workout</em> to steer categories.</li>
+          <li>Tap <strong>Save Thought</strong> and wait about a second while the mock “loading” state runs.</li>
+          <li>Review the saved card, then tap one of the three suggested category buttons.</li>
+          <li>See the folder-style grid highlight where the thought landed alongside other sample folders.</li>
+          <li>Refresh the page anytime to reset and run through another scenario.</li>
+        </ol>
+      </section>
+
       <section class="demo-app">
         <div id="save-screen" class="save-screen">
           <h2>Save Thought</h2>
-          <p>Capture whats on your mind: ideas, quotes, thoughts.</p>
+          <p>Capture what&apos;s on your mind: ideas, quotes, thoughts.</p>
           <div class="thought-input-wrap">
             <textarea
               id="thought-input"
@@ -60,6 +109,49 @@
           <p>Your thought has been organized into the selected folder.</p>
           <div id="folder-grid" class="folder-grid"></div>
         </div>
+      </section>
+
+      <section class="demo-simulated" aria-labelledby="demo-simulated-heading">
+        <h2 id="demo-simulated-heading">What&apos;s simulated vs. the real app</h2>
+        <p>
+          Everything here runs in your browser with simple keyword rules—no account, no cloud sync,
+          and no machine-learning service. Categories are guessed from a small word list (for example,
+          “quiz” nudges toward School) and the delay is only for show.
+        </p>
+        <p>
+          The real Thought Sweep app on iPhone adds secure sync, richer tagging, voice capture where
+          available, search across your library, and the full visual design you see in marketing
+          screenshots. Treat this page as a <em>behavioral sketch</em>, not a feature-complete build.
+        </p>
+      </section>
+
+      <section class="demo-faq" aria-labelledby="demo-faq-heading">
+        <h2 id="demo-faq-heading">Demo FAQ</h2>
+
+        <h3>Does this page store my thoughts?</h3>
+        <p>
+          No server receives your text. Content stays in this tab until you leave or refresh. Do not
+          paste confidential information if you are on a shared computer.
+        </p>
+
+        <h3>Why do categories differ from what I expect?</h3>
+        <p>
+          Suggestions are driven by lightweight keyword checks in the script, not by the production
+          app&apos;s logic. They are meant to illustrate the flow, not predict your final taxonomy.
+        </p>
+
+        <h3>Where do I get the real app?</h3>
+        <p>
+          Head to the <a href="download.html">Download</a> page for the App Store link, device
+          requirements, and next steps after install.
+        </p>
+
+        <h3>Can I use this demo on my phone?</h3>
+        <p>
+          This tour is tuned for desktop-width layouts. Install Thought Sweep on iOS from the
+          <a href="download.html">Download</a> page for the handheld experience, haptics, and native
+          capture shortcuts.
+        </p>
       </section>
     </main>
 

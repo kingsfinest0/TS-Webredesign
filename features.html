@@ -3,72 +3,168 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Thought Sweep feature tour: editorial summary, capture-to-to-do mapping, tips after onboarding, and an interactive slide carousel aligned with the iOS app."
+  />
   <title>Thought Sweep | Features</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="onboarding-page">
-    <a href="download.html" class="onboarding-skip">Skip</a>
-
-    <section class="onboarding-slide active" data-index="0">
-      <h1 class="onboarding-title">Capture your thoughts.</h1>
-      <p class="onboarding-copy">Sort it right away or when it's convenient</p>
-      <div class="onboarding-image-wrap">
-        <img class="onboarding-image" src="feature-capture.png" alt="Thought capture screen" />
+  <div id="wrapper" class="wrapper-features">
+    <header>
+      <div class="logo-title">
+        <img src="logo.png" alt="Thought Sweep Logo" class="logo" />
+        <h1>Thought Sweep</h1>
       </div>
-    </section>
+    </header>
 
-    <section class="onboarding-slide" data-index="1">
-      <h1 class="onboarding-title">Organize your ideas.</h1>
-      <p class="onboarding-copy">Sort uncategorized thoughts into categories, to-do's or keep them in your working memory</p>
-      <div class="onboarding-image-wrap">
-        <img class="onboarding-image" src="feature-organize.png" alt="Thought organization screen" />
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="demo.html">Demo</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="download.html">Download</a></li>
+      </ul>
+    </nav>
+
+    <main class="onboarding-page">
+      <div class="features-editorial">
+        <section class="features-page-intro" aria-labelledby="features-intro-heading">
+          <h2 id="features-intro-heading">How this tour maps to the product</h2>
+          <p>
+            The carousel below mirrors the first-time onboarding you would see after installing
+            Thought Sweep on iOS: capture, organize, build a digital memory, remember people, swipe
+            through recall, and tier your to-dos. Each slide pairs a headline with a single
+            clarifying line so you can scan fast, then dive into the real app for depth.
+          </p>
+          <p>
+            Use this page when you need a visual checklist of what the app emphasizes—speed first,
+            structure second—without downloading yet. When you are ready, jump to
+            <a href="download.html">Download</a> or try the interactive flow on the
+            <a href="demo.html">Demo</a> page.
+          </p>
+          <p>
+            Nothing on this page writes to your device beyond ordinary browser caching; the slides
+            are static HTML and the “Next” control only swaps visibility in the page.
+          </p>
+        </section>
+
+        <section class="features-summary-section" aria-labelledby="features-summary-heading">
+          <h2 id="features-summary-heading">Feature summary</h2>
+          <p class="features-summary-lede">
+            Quick reference for what each onboarding moment highlights versus what ships in the full
+            mobile experience.
+          </p>
+          <dl class="features-summary-dl">
+            <dt>Capture &amp; triage</dt>
+            <dd>
+              <strong>Here:</strong> hero art plus a reminder to sort now or later.
+              <strong>In app:</strong> one-tap capture, optional voice, and smart prompts tuned for mobile.
+            </dd>
+            <dt>Organization</dt>
+            <dd>
+              <strong>Here:</strong> explains uncategorized thoughts, to-dos, and working memory.
+              <strong>In app:</strong> drag-and-drop style moves between real categories and filters.
+            </dd>
+            <dt>Digital memory &amp; people</dt>
+            <dd>
+              <strong>Here:</strong> positions Thought Sweep as a personal knowledge base and rolodex of ideas tied to people.
+              <strong>In app:</strong> richer cards, dates, and search across entries.
+            </dd>
+            <dt>Recall &amp; to-dos</dt>
+            <dd>
+              <strong>Here:</strong> swipe metaphor and priority tiers described in one line each.
+              <strong>In app:</strong> full-screen review gestures plus notifications where you enable them.
+            </dd>
+          </dl>
+        </section>
+
+        <section class="features-after-tips" aria-labelledby="features-tips-heading">
+          <h2 id="features-tips-heading">Tips after onboarding</h2>
+          <ul>
+            <li>Finish the carousel once, then revisit any slide using the dots—order matches the install story.</li>
+            <li>Pair categories with a simple naming scheme (work, personal, health) before importing older notes.</li>
+            <li>Export or back up from the real app periodically; this marketing site does not sync your library.</li>
+          </ul>
+          <h3 id="features-platform-heading">Web experience vs. iOS app</h3>
+          <p>
+            This website previews visuals and copy in the browser. Thought Sweep itself is an iOS
+            app with native performance, offline-friendly capture where supported, and App Store
+            updates. Treat the web pages as orientation; treat the installed app as the source of
+            truth for features and privacy settings.
+          </p>
+        </section>
       </div>
-    </section>
 
-    <section class="onboarding-slide" data-index="2">
-      <h1 class="onboarding-title">Create your Digital Memory</h1>
-      <p class="onboarding-copy">Add categories to organize your thoughts, ideas and memorable information</p>
-      <div class="onboarding-image-wrap">
-        <img class="onboarding-image" src="feature-memory.png" alt="Digital memory screen" />
+      <div class="features-carousel-area">
+        <a href="download.html" class="onboarding-skip">Skip</a>
+
+      <section class="onboarding-slide active" data-index="0">
+        <h1 class="onboarding-title">Capture your thoughts.</h1>
+        <p class="onboarding-copy">Sort it right away or when it's convenient</p>
+        <div class="onboarding-image-wrap">
+          <img class="onboarding-image" src="feature-capture.png" alt="Thought capture screen" />
+        </div>
+      </section>
+
+      <section class="onboarding-slide" data-index="1">
+        <h1 class="onboarding-title">Organize your ideas.</h1>
+        <p class="onboarding-copy">Sort uncategorized thoughts into categories, to-do's or keep them in your working memory</p>
+        <div class="onboarding-image-wrap">
+          <img class="onboarding-image" src="feature-organize.png" alt="Thought organization screen" />
+        </div>
+      </section>
+
+      <section class="onboarding-slide" data-index="2">
+        <h1 class="onboarding-title">Create your Digital Memory</h1>
+        <p class="onboarding-copy">Add categories to organize your thoughts, ideas and memorable information</p>
+        <div class="onboarding-image-wrap">
+          <img class="onboarding-image" src="feature-memory.png" alt="Digital memory screen" />
+        </div>
+      </section>
+
+      <section class="onboarding-slide" data-index="3">
+        <h1 class="onboarding-title">Network is networth</h1>
+        <p class="onboarding-copy">Remember thoughts, quotes, advice and ideas about people you know</p>
+        <div class="onboarding-image-wrap">
+          <img class="onboarding-image" src="feature-people.png" alt="People memory screen" />
+        </div>
+      </section>
+
+      <section class="onboarding-slide" data-index="4">
+        <h1 class="onboarding-title">Remember effortlessly</h1>
+        <p class="onboarding-copy">Swipe through your thoughts to easily remember what's saved in your Thought Sweep</p>
+        <div class="onboarding-image-wrap">
+          <img class="onboarding-image" src="feature-swipe.png" alt="Swipe thoughts screen" />
+        </div>
+      </section>
+
+      <section class="onboarding-slide" data-index="5">
+        <h1 class="onboarding-title">Arrange your To-Do's</h1>
+        <p class="onboarding-copy">Get thoughts out of your head. Add to-do's to priority tiers so you can get things done</p>
+        <div class="onboarding-image-wrap">
+          <img class="onboarding-image" src="feature-todo.png" alt="To-do arrangement screen" />
+        </div>
+      </section>
+
+      <div class="onboarding-dots" aria-label="Slide progress">
+        <button class="onboarding-dot active" type="button" aria-label="Slide 1"></button>
+        <button class="onboarding-dot" type="button" aria-label="Slide 2"></button>
+        <button class="onboarding-dot" type="button" aria-label="Slide 3"></button>
+        <button class="onboarding-dot" type="button" aria-label="Slide 4"></button>
+        <button class="onboarding-dot" type="button" aria-label="Slide 5"></button>
+        <button class="onboarding-dot" type="button" aria-label="Slide 6"></button>
       </div>
-    </section>
 
-    <section class="onboarding-slide" data-index="3">
-      <h1 class="onboarding-title">Network is networth</h1>
-      <p class="onboarding-copy">Remember thoughts, quotes, advice and ideas about people you know</p>
-      <div class="onboarding-image-wrap">
-        <img class="onboarding-image" src="feature-people.png" alt="People memory screen" />
+      <button id="onboarding-next" class="onboarding-next" type="button">Next</button>
       </div>
-    </section>
+    </main>
 
-    <section class="onboarding-slide" data-index="4">
-      <h1 class="onboarding-title">Remember effortlessly</h1>
-      <p class="onboarding-copy">Swipe through your thoughts to easily remember what's saved in your Thought Sweep</p>
-      <div class="onboarding-image-wrap">
-        <img class="onboarding-image" src="feature-swipe.png" alt="Swipe thoughts screen" />
-      </div>
-    </section>
-
-    <section class="onboarding-slide" data-index="5">
-      <h1 class="onboarding-title">Arrange your To-Do's</h1>
-      <p class="onboarding-copy">Get thoughts out of your head. Add to-do's to priority tiers so you can get things done</p>
-      <div class="onboarding-image-wrap">
-        <img class="onboarding-image" src="feature-todo.png" alt="To-do arrangement screen" />
-      </div>
-    </section>
-
-    <div class="onboarding-dots" aria-label="Slide progress">
-      <button class="onboarding-dot active" type="button" aria-label="Slide 1"></button>
-      <button class="onboarding-dot" type="button" aria-label="Slide 2"></button>
-      <button class="onboarding-dot" type="button" aria-label="Slide 3"></button>
-      <button class="onboarding-dot" type="button" aria-label="Slide 4"></button>
-      <button class="onboarding-dot" type="button" aria-label="Slide 5"></button>
-      <button class="onboarding-dot" type="button" aria-label="Slide 6"></button>
-    </div>
-
-    <button id="onboarding-next" class="onboarding-next" type="button">Next</button>
-  </main>
+    <footer>
+      <p>&copy; 2026 Thought Sweep. All rights reserved.</p>
+    </footer>
+  </div>
 
   <script>
     const slides = Array.from(document.querySelectorAll(".onboarding-slide"));
